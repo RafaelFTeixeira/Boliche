@@ -1,0 +1,11 @@
+c:\Users\rafaelteixeira\documents\visual studio 2015\Projects\Boliche\Test.Boliche\bin\Debug\Test.Boliche.dll
+c:\Users\rafaelteixeira\documents\visual studio 2015\Projects\Boliche\Test.Boliche\bin\Debug\Test.Boliche.pdb
+c:\Users\rafaelteixeira\documents\visual studio 2015\Projects\Boliche\Test.Boliche\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+c:\Users\rafaelteixeira\documents\visual studio 2015\Projects\Boliche\Test.Boliche\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+c:\Users\rafaelteixeira\documents\visual studio 2015\Projects\Boliche\Test.Boliche\obj\Debug\Test.Boliche.csprojResolveAssemblyReference.cache
+c:\Users\rafaelteixeira\documents\visual studio 2015\Projects\Boliche\Test.Boliche\obj\Debug\Test.Boliche.dll
+c:\Users\rafaelteixeira\documents\visual studio 2015\Projects\Boliche\Test.Boliche\obj\Debug\Test.Boliche.pdb
+c:\Users\rafaelteixeira\documents\visual studio 2015\Projects\Boliche\Test.Boliche\bin\Debug\Boliche.exe
+c:\Users\rafaelteixeira\documents\visual studio 2015\Projects\Boliche\Test.Boliche\bin\Debug\Boliche.pdb
+C:\Users\rafaelteixeira\documents\visual studio 2015\Projects\Boliche\Test.Boliche\bin\Debug\nunit.framework.dll
+C:\Users\rafaelteixeira\documents\visual studio 2015\Projects\Boliche\Test.Boliche\bin\Debug\nunit.framework.xml
