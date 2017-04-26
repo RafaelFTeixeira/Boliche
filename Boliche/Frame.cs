@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace Boliche
 {
@@ -12,9 +13,9 @@ namespace Boliche
             Jogadas = jogadas;
         }
 
-        public void PontuarFrame()
+        internal void PontuarFrame(int adicionalDePontuacao = 0)
         {
-            Pontuacao = Jogadas.Sum();
+            Pontuacao = Jogadas.Sum() + adicionalDePontuacao;
         }
     }
 }

@@ -12,6 +12,7 @@ namespace Boliche
         {
             _pontuacoesDosFrames = new List<Frame>();
         }
+
         public void Adicionar(Frame pinosQueForamDerrubados)
         {
             _pontuacoesDosFrames.Add(pinosQueForamDerrubados);
@@ -24,15 +25,27 @@ namespace Boliche
 
         public int ObterPontuacao()
         {
-            foreach (var frame in _pontuacoesDosFrames)
+            Frame frame;
+            var somaDasJogadasDoFrame = 0;
+            for (var i = 0; i < _pontuacoesDosFrames.Count; i++)
             {
-                var somaDasJogadasDoFrame = frame.Jogadas.Sum();
+                frame = _pontuacoesDosFrames[i];
+                somaDasJogadasDoFrame = frame.Jogadas.Sum();
                 if (somaDasJogadasDoFrame < PontuacaoMaximaDoFrame)
                 {
                     frame.PontuarFrame();
                 }
+                if (0 < i)
+                {
+                    var frameAnterior = _pontuacoesDosFrames[i - 1];
+                    var somaDasJogadasDoFrameAnterior = frameAnterior.Jogadas.Sum();
+                    if (somaDasJogadasDoFrameAnterior == PontuacaoMaximaDoFrame)
+                    {
+                        frameAnterior.PontuarFrame(frame.Jogadas.FirstOrDefault());
+                    }
+                }
             }
-            return _pontuacoesDosFrames.Sum(frame => frame.Pontuacao);
+            return _pontuacoesDosFrames.Sum(f => f.Pontuacao);
         }
     }
 }
