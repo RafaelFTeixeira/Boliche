@@ -33,8 +33,8 @@ namespace Boliche
                 {
                     frame.Pontuar();
                 }
-                if (PrimeiraJogadaDoFrameTemPinosDerrubados(frame)
-                    || !PrimeiraJogadaDoFrameTemPinosDerrubados(frame) && SegundaJogadaDoFrameTemPinosDerrubados(frame))
+                if (PrimeiraJogadaDoFrameTemPinosDerrubados(frame) && 0 < i
+                    || !PrimeiraJogadaDoFrameTemPinosDerrubados(frame) && SegundaJogadaDoFrameTemPinosDerrubados(frame) && 0 < i)
                 {
                     PontueFrameAnteriorSeForUmSpareOuStrike(i);
                 }
@@ -53,13 +53,17 @@ namespace Boliche
         }
         private void PontueFrameAnteriorSeForUmSpareOuStrike(int indice)
         {
-            if (0 < indice)
+            var frameAnterior = _pontuacoesDosFrames[indice - 1];
+            var somaDasJogadasDoFrameAnterior = frameAnterior.Jogadas.Sum();
+            if (somaDasJogadasDoFrameAnterior == PontuacaoMaximaDoFrame)
             {
-                var frameAnterior = _pontuacoesDosFrames[indice - 1];
-                var somaDasJogadasDoFrameAnterior = frameAnterior.Jogadas.Sum();
-                if (somaDasJogadasDoFrameAnterior == PontuacaoMaximaDoFrame)
+                var frameAtual = _pontuacoesDosFrames[indice];
+                if (EhStrike(frameAnterior) && frameAtual.Jogadas.Count() > 1)
                 {
-                    var frameAtual = _pontuacoesDosFrames[indice];
+                    frameAnterior.Pontuar(frameAtual.Jogadas.Sum());
+                }
+                else if(!EhStrike(frameAnterior))
+                {
                     var pinosderrubadosDaPrimeiraJogadaDoFrameAtual = frameAtual.Jogadas.FirstOrDefault();
                     var adicionalDePontuacao = 0 != pinosderrubadosDaPrimeiraJogadaDoFrameAtual
                         ? pinosderrubadosDaPrimeiraJogadaDoFrameAtual
@@ -67,6 +71,11 @@ namespace Boliche
                     frameAnterior.Pontuar(adicionalDePontuacao);
                 }
             }
+        }
+
+        private static bool EhStrike(Frame frameAnterior)
+        {
+            return frameAnterior.Jogadas.Length == 1;
         }
 
         private bool TemMaisQueUmaJogada(Frame frame)

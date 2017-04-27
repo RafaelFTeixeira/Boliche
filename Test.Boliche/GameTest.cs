@@ -16,7 +16,7 @@ namespace Test.Boliche
         }
 
         [Test]
-        public void Deve_lancar_a_primeira_jogada_do_frame_e_nao_pontuar()
+        public void Nao_Deve_pontuar_a_primeira_jogada_do_frame()
         {
             var frame = new Frame(new[] { 1 });
 
@@ -26,17 +26,7 @@ namespace Test.Boliche
         }
 
         [Test]
-        public void Deve_lancar_as_duas_jogadas_do_frame()
-        {
-            var frame = new Frame(new[] { 1, 4 });
-
-            _game.Adicionar(frame);
-
-            Assert.AreEqual(5, _game.ObterPontuacao());
-        }
-
-        [Test]
-        public void Deve_lancar_a_segunda_jogada_do_frame()
+        public void Deve_pontuar_a_segunda_jogada_do_frame_e_nao_ser_strike_ou_spare()
         {
             var frames = new List<Frame>
             {
@@ -142,6 +132,28 @@ namespace Test.Boliche
             _game.Adicionar(frames);
 
             Assert.AreEqual(61, _game.ObterPontuacao());
+        }
+
+        [Test]
+        public void Nao_deve_pontuar_quando_houver_strike_sem_jogar_as_duas_proximas_jogadas()
+        {
+            var frames = new List<Frame>
+            {
+                new Frame(new[] {1, 4}),
+                new Frame(new[] {4, 5}),
+                new Frame(new[] {6, 4}),
+                new Frame(new[] {5, 5}),
+                new Frame(new[] {10}),
+                new Frame(new[] {0, 1}),
+                new Frame(new[] {7, 3}),
+                new Frame(new[] {6, 4}),
+                new Frame(new[] {10}),
+                new Frame(new[] {2}),
+            };
+
+            _game.Adicionar(frames);
+
+            Assert.AreEqual(97, _game.ObterPontuacao());
         }
     }
 }
