@@ -41,12 +41,17 @@ namespace Boliche
 
                 PontueFrameAnteriorSeForUmSpareOuStrike(indice);
 
-                if (9 == indice && frame.Jogadas.Count() > 1)
+                if (UltimoFrame(frame, indice))
                 {
                     frame.Pontuar();
                 }
             }
             return _pontuacoesDosFrames.Sum(f => f.Pontuacao);
+        }
+
+        private static bool UltimoFrame(Frame frame, int indice)
+        {
+            return 9 == indice && frame.Jogadas.Count() > 1;
         }
 
         private bool PontueFrameQuandoTiverTodasJogadasCompletasENaoForUmStrikeOuSpare(Frame frame)
