@@ -88,21 +88,6 @@ namespace Test.Boliche
         }
 
         [Test]
-        public void Nao_deve_pontuar_quando_houver_strike_ou_spare_e_proxima_primeira_jogada_ter_nenhum_pino_derrubado()
-        {
-            var frames = new List<Frame>
-            {
-                new Frame(new[] {1, 4}),
-                new Frame(new[] {5, 5}),
-                new Frame(new[] {0})
-            };
-
-            _game.Adicionar(frames);
-
-            Assert.AreEqual(5, _game.ObterPontuacao());
-        }
-
-        [Test]
         public void Deve_pontuar_quando_houver_strike_ou_spare_e_proxima_primeira_jogada_ter_nenhum_pino_derrubado_e_segunda_jogada_ter_pelo_menos_um_pino_derrubado()
         {
             var frames = new List<Frame>
@@ -154,6 +139,28 @@ namespace Test.Boliche
             _game.Adicionar(frames);
 
             Assert.AreEqual(97, _game.ObterPontuacao());
+        }
+
+        [Test]
+        public void Deve_pontuar_ultimo_frame_com_tres_jogadas()
+        {
+            var frames = new List<Frame>
+            {
+                new Frame(new[] {1, 4}),
+                new Frame(new[] {4, 5}),
+                new Frame(new[] {6, 4}),
+                new Frame(new[] {5, 5}),
+                new Frame(new[] {10}),
+                new Frame(new[] {0, 1}),
+                new Frame(new[] {7, 3}),
+                new Frame(new[] {6, 4}),
+                new Frame(new[] {10}),
+                new Frame(new[] {2, 8, 6}),
+            };
+
+            _game.Adicionar(frames);
+
+            Assert.AreEqual(133, _game.ObterPontuacao());
         }
     }
 }
