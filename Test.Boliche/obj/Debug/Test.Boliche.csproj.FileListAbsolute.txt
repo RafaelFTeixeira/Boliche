@@ -9,3 +9,14 @@ c:\Users\rafaelteixeira\documents\visual studio 2015\Projects\Boliche\Test.Bolic
 c:\Users\rafaelteixeira\documents\visual studio 2015\Projects\Boliche\Test.Boliche\bin\Debug\Boliche.pdb
 C:\Users\rafaelteixeira\documents\visual studio 2015\Projects\Boliche\Test.Boliche\bin\Debug\nunit.framework.dll
 C:\Users\rafaelteixeira\documents\visual studio 2015\Projects\Boliche\Test.Boliche\bin\Debug\nunit.framework.xml
+D:\Programacao\ProjetosCSharp\Boliche\Test.Boliche\bin\Debug\Test.Boliche.dll
+D:\Programacao\ProjetosCSharp\Boliche\Test.Boliche\bin\Debug\Test.Boliche.pdb
+D:\Programacao\ProjetosCSharp\Boliche\Test.Boliche\bin\Debug\Boliche.exe
+D:\Programacao\ProjetosCSharp\Boliche\Test.Boliche\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\Programacao\ProjetosCSharp\Boliche\Test.Boliche\bin\Debug\nunit.framework.dll
+D:\Programacao\ProjetosCSharp\Boliche\Test.Boliche\bin\Debug\Boliche.pdb
+D:\Programacao\ProjetosCSharp\Boliche\Test.Boliche\bin\Debug\nunit.framework.xml
+D:\Programacao\ProjetosCSharp\Boliche\Test.Boliche\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+D:\Programacao\ProjetosCSharp\Boliche\Test.Boliche\obj\Debug\Test.Boliche.csprojResolveAssemblyReference.cache
+D:\Programacao\ProjetosCSharp\Boliche\Test.Boliche\obj\Debug\Test.Boliche.dll
+D:\Programacao\ProjetosCSharp\Boliche\Test.Boliche\obj\Debug\Test.Boliche.pdb

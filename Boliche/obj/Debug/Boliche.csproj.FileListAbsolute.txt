@@ -4,3 +4,9 @@ c:\users\rafaelteixeira\documents\visual studio 2015\Projects\Boliche\Boliche\bi
 c:\users\rafaelteixeira\documents\visual studio 2015\Projects\Boliche\Boliche\obj\Debug\Boliche.csprojResolveAssemblyReference.cache
 c:\users\rafaelteixeira\documents\visual studio 2015\Projects\Boliche\Boliche\obj\Debug\Boliche.exe
 c:\users\rafaelteixeira\documents\visual studio 2015\Projects\Boliche\Boliche\obj\Debug\Boliche.pdb
+D:\Programacao\ProjetosCSharp\Boliche\Boliche\bin\Debug\Boliche.exe.config
+D:\Programacao\ProjetosCSharp\Boliche\Boliche\obj\Debug\Boliche.exe
+D:\Programacao\ProjetosCSharp\Boliche\Boliche\obj\Debug\Boliche.pdb
+D:\Programacao\ProjetosCSharp\Boliche\Boliche\bin\Debug\Boliche.exe
+D:\Programacao\ProjetosCSharp\Boliche\Boliche\bin\Debug\Boliche.pdb
+D:\Programacao\ProjetosCSharp\Boliche\Boliche\obj\Debug\Boliche.csprojResolveAssemblyReference.cache

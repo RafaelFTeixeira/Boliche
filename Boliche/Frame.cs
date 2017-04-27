@@ -13,7 +13,7 @@ namespace Boliche
             Jogadas = jogadas;
         }
 
-        internal void PontuarFrame(int adicionalDePontuacao = 0)
+        internal void Pontuar(int adicionalDePontuacao = 0)
         {
             Pontuacao = Jogadas.Sum() + adicionalDePontuacao;
         }
