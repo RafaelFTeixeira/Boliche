@@ -7,10 +7,12 @@ namespace Boliche
     {
         public static int PontuacaoMaximaDoFrame = 10;
         private readonly List<Frame> _pontuacoesDosFrames;
+        private Pontuacao _pontuacao;
 
         public Game()
         {
             _pontuacoesDosFrames = new List<Frame>();
+            _pontuacao = new Pontuacao();
         }
 
         public void Adicionar(Frame pinosQueForamDerrubados)
@@ -30,16 +32,27 @@ namespace Boliche
 
         private int CalcularPontuacao()
         {
-            Frame frame;
+            Frame frame, frameAnterior;
+            _pontuacao.PontuacoesDosFrames = _pontuacoesDosFrames;
             for (var indice = 0; indice < _pontuacoesDosFrames.Count; indice++)
             {
                 frame = _pontuacoesDosFrames[indice];
-                if (PontueFrameQuandoTiverTodasJogadasCompletasENaoForUmStrikeOuSpare(frame))
+                frameAnterior = indice > 0 ? _pontuacoesDosFrames[indice - 1] : _pontuacoesDosFrames[indice];
+
+                if (FrameTemTodasJogadasCompletasENaoEhUmStrikeOuSpare(frame))
                 {
                     frame.Pontuar();
                 }
 
-                PontueFrameAnteriorSeForUmSpareOuStrike(indice);
+                if (FrameAnteriorForUmSpare(indice))
+                {
+                    frameAnterior.PontuarSpare(frame);
+                }
+
+                if (EhStrike(frameAnterior))
+                {
+                    frameAnterior.PontuarStrike(frame);
+                }
 
                 if (UltimoFrame(frame, indice))
                 {
@@ -49,45 +62,32 @@ namespace Boliche
             return _pontuacoesDosFrames.Sum(f => f.Pontuacao);
         }
 
+        private bool FrameAnteriorForUmSpare(int indice)
+        {
+            if (0 >= indice) return false;
+
+            var frameAnterior = _pontuacoesDosFrames[indice - 1];
+            var somaDasJogadasDoFrameAnterior = frameAnterior.Jogadas.Sum();
+            if (somaDasJogadasDoFrameAnterior == PontuacaoMaximaDoFrame && !EhStrike(frameAnterior))
+            {
+                return true;
+            }
+            return false;
+        }
+
         private static bool UltimoFrame(Frame frame, int indice)
         {
             return 9 == indice && frame.Jogadas.Count() > 1;
         }
 
-        private bool PontueFrameQuandoTiverTodasJogadasCompletasENaoForUmStrikeOuSpare(Frame frame)
+        private bool FrameTemTodasJogadasCompletasENaoEhUmStrikeOuSpare(Frame frame)
         {
             return 1 < frame.Jogadas.Count() && frame.Jogadas.Sum() < PontuacaoMaximaDoFrame;
         }
 
-        private void PontueFrameAnteriorSeForUmSpareOuStrike(int indice)
+        private static bool EhStrike(Frame frame)
         {
-            if (0 >= indice) return;
-
-            var frameAnterior = _pontuacoesDosFrames[indice - 1];
-            var somaDasJogadasDoFrameAnterior = frameAnterior.Jogadas.Sum();
-            if (somaDasJogadasDoFrameAnterior == PontuacaoMaximaDoFrame)
-            {
-                var frameAtual = _pontuacoesDosFrames[indice];
-                if (EhStrike(frameAnterior) && frameAtual.Jogadas.Count() > 1)
-                {
-                    int primeiraJogada = frameAtual.Jogadas[0];
-                    int segundaJogada = frameAtual.Jogadas[1];
-                    frameAnterior.Pontuar(primeiraJogada + segundaJogada);
-                }
-                else if (!EhStrike(frameAnterior))
-                {
-                    var pinosderrubadosDaPrimeiraJogadaDoFrameAtual = frameAtual.Jogadas.FirstOrDefault();
-                    var adicionalDePontuacao = 0 != pinosderrubadosDaPrimeiraJogadaDoFrameAtual
-                        ? pinosderrubadosDaPrimeiraJogadaDoFrameAtual
-                        : frameAtual.Jogadas.LastOrDefault();
-                    frameAnterior.Pontuar(adicionalDePontuacao);
-                }
-            }
-        }
-
-        private static bool EhStrike(Frame frameAnterior)
-        {
-            return frameAnterior.Jogadas.Length == 1;
+            return frame.Jogadas.Length == 1 && frame.Jogadas.Sum() == PontuacaoMaximaDoFrame;
         }
     }
 }
